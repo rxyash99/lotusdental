@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dr. Prasad's Lotus Dental Clinic | Kolhapur</title>
+    <style>
+        /* CORE SETTINGS */
+        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+        :root {
+            --primary: #004d40; 
+            --secondary: #12876f; 
+            --accent: #d4af37; 
+            --light: #f4f9f8;
+            --white: #ffffff;
+            --text-gray: #555;
+        }
+        body { font-family: 'Segoe UI', Arial, sans-serif; color: #333; line-height: 1.7; background: var(--light); overflow-x: hidden; }
+
+        /* ANIMATIONS */
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes logoPulse { 
+            0%, 100% { transform: scale(1); filter: drop-shadow(0 0 0px rgba(212,175,55,0)); } 
+            50% { transform: scale(1.08); filter: drop-shadow(0 0 12px rgba(212,175,55,0.6)); } 
+        }
+
+        /* HEADER */
+        header { background: var(--white); padding: 15px 8%; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 4px 15px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 1000; }
+        .logo-box { display: flex; align-items: center; gap: 15px; text-decoration: none; }
+        .logo-img { width: 60px; height: 60px; object-fit: contain; animation: logoPulse 3s infinite ease-in-out; }
+        .logo-text { font-size: 24px; font-weight: 800; color: var(--primary); letter-spacing: 1.5px; }
+        
+        nav { display: flex; gap: 20px; }
+        nav a { text-decoration: none; color: var(--primary); font-weight: 600; font-size: 13px; text-transform: uppercase; transition: 0.3s; }
+        nav a:hover { color: var(--accent); }
+
+        /* HERO SECTION */
+        .hero { 
+            height: 85vh; 
+            width: 100%; 
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('clinic2.jpg'); 
+            background-size: cover; 
+            background-position: center; 
+            display: flex; 
+            flex-direction: column; 
+            justify-content: center; 
+            align-items: center; 
+            color: white; 
+            text-align: center; 
+            padding: 0 10%; 
+        }
+        
+        /* CONTENT SECTIONS */
+        .content-section { padding: 80px 8%; display: flex; flex-wrap: wrap; align-items: center; gap: 60px; background: var(--white); }
+        .content-text { flex: 1; min-width: 320px; }
+        .content-image { flex: 1; min-width: 320px; }
+        .content-image img { width: 100%; border-radius: 20px; box-shadow: 0 15px 35px rgba(0,0,0,0.1); border-bottom: 8px solid var(--accent); }
+        .reverse { flex-direction: row-reverse; background: var(--light); }
+
+        /* TRANSFORMATION GALLERY - FIXED VISIBILITY */
+        .transformation-gallery { padding: 80px 8%; text-align: center; background: var(--white); border-top: 1px solid #eee; }
+        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 40px; }
+        .gallery-card { background: var(--light); border-radius: 20px; overflow: hidden; box-shadow: 0 10px 20px rgba(0,0,0,0.08); transition: 0.3s; border: 1px solid #eee; }
+        .gallery-img-box { width: 100%; height: 350px; overflow: hidden; position: relative; background: #ddd; }
+        .gallery-img-box img { width: 100%; height: 100%; object-fit: contain; background: #f9f9f9; transition: 0.4s; }
+        .gallery-card:hover img { transform: scale(1.05); }
+        .badge { position: absolute; top: 15px; left: 15px; background: var(--primary); color: white; padding: 5px 12px; border-radius: 4px; font-size: 11px; font-weight: bold; z-index: 2; }
+        .gallery-desc { padding: 15px; color: var(--primary); font-weight: bold; background: var(--white); }
+
+        /* SERVICES GRID */
+        .all-services { padding: 80px 8%; text-align: center; background: var(--light); }
+        .service-list-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; margin-top: 40px; }
+        .service-card { 
+            background: var(--white); 
+            padding: 25px; 
+            border-radius: 15px; 
+            text-align: left;
+            border: 1px solid #eef2f1;
+            transition: 0.3s;
+        }
+        .service-card:hover { 
+            transform: translateY(-5px); 
+            box-shadow: 0 15px 30px rgba(0,77,64,0.08);
+            border-color: var(--secondary);
+        }
+        .service-card h4 { color: var(--primary); margin-bottom: 8px; font-size: 20px; display: flex; align-items: center; gap: 10px; }
+        .service-card h4::before { content: "✦"; color: var(--accent); }
+        .service-card p { font-size: 14px; color: var(--text-gray); line-height: 1.5; }
+
+        /* REVIEWS */
+        .reviews { padding: 80px 8%; background: var(--primary); color: white; text-align: center; }
+        .review-card { background: rgba(255,255,255,0.08); padding: 30px; border-radius: 20px; width: 320px; border: 1px solid rgba(212,175,55,0.3); margin: 10px; }
+
+        /* FOOTER */
+        footer { background: #121212; color: #bbb; padding: 60px 8%; text-align: center; }
+        .footer-highlight { color: var(--accent); font-size: 22px; font-weight: bold; text-decoration: none; }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo-box">
+        <img src="logo.jpg" alt="Logo" class="logo-img">
+        <div class="logo-text">LOTUS DENTAL</div>
+    </div>
+    <nav>
+        <a href="#about">Welcome</a>
+        <a href="#commitment">Excellence</a>
+        <a href="#transformations">Gallery</a>
+        <a href="#services">Services</a>
+        <a href="#contact">Location</a>
+    </nav>
+    <div style="font-weight: bold; color: var(--secondary); letter-spacing: 2px;">KOLHAPUR</div>
+</header>
+
+<section class="hero">
+    <div style="max-width: 800px; animation: fadeInUp 1.2s;">
+        <h1 style="font-size: clamp(32px, 5vw, 55px); color: var(--white); text-shadow: 2px 2px 10px rgba(0,0,0,0.5);">
+            "A smile is the universal welcome. Let us help you make yours <span style="color: var(--accent);">unforgettable.</span>"
+        </h1>
+    </div>
+</section>
+
+<!-- WELCOME SECTION -->
+<section id="about" class="content-section">
+    <div class="content-text">
+        <h2 style="color: var(--primary); font-size: 34px; margin-bottom: 20px; border-left: 5px solid var(--accent); padding-left: 15px;">Welcome to Lotus Dental Care</h2>
+        <p style="font-size: 18px; color: #444;">
+            We combine expert dental skills, modern technology, and a gentle, caring approach to ensure every visit is comfortable and effective. 
+            From routine check-ups to advanced treatments, we deliver precise, long-lasting results that leave you confident and healthy. 
+            Choosing us means choosing the best care for your smile — because you deserve nothing less.
+        </p>
+    </div>
+    <div class="content-image">
+        <img src="welcome-image.jpg" alt="Welcome to Lotus Dental Care">
+    </div>
+</section>
+
+<!-- COMMITMENT SECTION -->
+<section id="commitment" class="content-section reverse">
+    <div class="content-text">
+        <h2 style="color: var(--primary); font-size: 34px; margin-bottom: 15px; border-right: 5px solid var(--accent); padding-right: 15px; text-align: right;">Committed To Dental Excellence</h2>
+        <h3 style="color: var(--secondary); margin-bottom: 20px; text-align: right;">We Create Beautiful and Brighter Smiles</h3>
+        <p style="font-size: 17px; color: #444; margin-bottom: 15px;">
+            At Lotus Dental Care, we are committed to providing high-quality, compassionate, and modern dental treatment for patients of all ages. Our clinic combines advanced technology with a gentle approach to ensure a comfortable and stress-free experience.
+        </p>
+        <p style="font-size: 17px; color: #444;">
+            From preventive care and routine check-ups to advanced procedures, our goal is to deliver safe, effective, and long-lasting results in a clean and hygienic environment. Your comfort, safety, and satisfaction are always our top priorities.
+        </p>
+    </div>
+    <div class="content-image">
+        <img src="excellence-image.jpg" alt="Committed to Dental Excellence">
+    </div>
+</section>
+
+<!-- TRANSFORMATION GALLERY - SCALED FOR VISIBILITY -->
+<section id="transformations" class="transformation-gallery">
+    <h2 style="color: var(--primary); font-size: 36px;">Smile Transformations</h2>
+    <p style="color: var(--text-gray); margin-top: 10px;">Real results from our happy patients</p>
+    
+    <div class="gallery-grid">
+        <div class="gallery-card">
+            <div class="gallery-img-box">
+                <span class="badge">BEFORE & AFTER</span>
+                <img src="transformation1.jpg" alt="Transformation 1">
+            </div>
+            <div class="gallery-desc">Teeth Whitening</div>
+        </div>
+        <div class="gallery-card">
+            <div class="gallery-img-box">
+                <span class="badge">BEFORE & AFTER</span>
+                <img src="transformation2.jpg" alt="Transformation 2">
+            </div>
+            <div class="gallery-desc">Smile Correction</div>
+        </div>
+        <div class="gallery-card">
+            <div class="gallery-img-box">
+                <span class="badge">BEFORE & AFTER</span>
+                <img src="transformation3.jpg" alt="Transformation 3">
+            </div>
+            <div class="gallery-desc">Dental Implants</div>
+        </div>
+    </div>
+</section>
+
+<!-- ALL 16 SERVICES -->
+<section id="services" class="all-services">
+    <h2 style="color: var(--primary); font-size: 36px;">Our Specialized Care</h2>
+    <div class="service-list-grid">
+        <div class="service-card"><h4>Teeth Whitening</h4><p>Professional brightening treatments to remove stains and restore your natural pearly white glow.</p></div>
+        <div class="service-card"><h4>Dental Bonding</h4><p>Repairing chipped or cracked teeth using tooth-colored resin for a seamless, natural look.</p></div>
+        <div class="service-card"><h4>Check-ups</h4><p>Comprehensive oral examinations and screenings to catch potential issues early and maintain health.</p></div>
+        <div class="service-card"><h4>Cosmetic Procedures</h4><p>Aesthetic enhancements including smile makeovers to boost your confidence and facial harmony.</p></div>
+        <div class="service-card"><h4>Dental Implants</h4><p>Permanent, high-quality replacements for missing teeth that function and look like natural ones.</p></div>
+        <div class="service-card"><h4>Dentures & Bridges</h4><p>Custom-fitted prosthetic solutions to restore your bite and fill gaps left by missing teeth.</p></div>
+        <div class="service-card"><h4>Extractions</h4><p>Safe and gentle removal of damaged or problematic teeth with minimal discomfort.</p></div>
+        <div class="service-card"><h4>Fillings & Sealants</h4><p>Protecting teeth from decay and restoring cavities with durable, aesthetic materials.</p></div>
+        <div class="service-card"><h4>Mouth Guards</h4><p>Custom-made protective gear for athletes or to prevent damage from nighttime teeth grinding.</p></div>
+        <div class="service-card"><h4>Oral Surgery</h4><p>Advanced surgical care for complex issues like impacted wisdom teeth or jaw corrections.</p></div>
+        <div class="service-card"><h4>Paediatrics</h4><p>Gentle, friendly dental care designed specifically for the unique needs of children.</p></div>
+        <div class="service-card"><h4>Root Canals</h4><p>Saving infected teeth by removing damaged pulp, cleaning the area, and sealing it permanently.</p></div>
+        <div class="service-card"><h4>Teeth Cleaning</h4><p>Professional scaling and polishing to remove plaque and tartar buildup that brushing misses.</p></div>
+        <div class="service-card"><h4>Teeth Reshaping</h4><p>Subtle contouring of tooth enamel to improve the shape, length, or surface of your teeth.</p></div>
+        <div class="service-card"><h4>Veneers & Crowns</h4><p>Durable porcelain caps or shells that restore strength and beauty to damaged or worn teeth.</p></div>
+        <div class="service-card"><h4>Digital X-ray</h4><p>Low-radiation high-precision imaging to accurately diagnose hidden dental issues.</p></div>
+    </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="reviews">
+    <h2 style="font-size: 36px; margin-bottom: 30px; color: var(--accent);">What Our Patients Say</h2>
+    <div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center;">
+        <div class="review-card">
+            <div style="color:var(--accent); font-size: 20px;">★★★★★</div>
+            <p style="margin-top: 10px;">"Dr. Prasad is very patient and explains the procedure well. Highly recommended."</p>
+            <h4 style="margin-top: 15px; color: var(--accent);">— Rahul S.</h4>
+        </div>
+        <div class="review-card">
+            <div style="color:var(--accent); font-size: 20px;">★★★★★</div>
+            <p style="margin-top: 10px;">"Excellent treatment for my root canal. Totally painless experience."</p>
+            <h4 style="margin-top: 15px; color: var(--accent);">— Sneha M.</h4>
+        </div>
+    </div>
+</section>
+
+<!-- MAP SECTION -->
+<section id="contact" style="padding: 80px 8%; text-align: center; background: var(--white);">
+    <h2 style="color: var(--primary); margin-bottom: 30px;">Visit Us in Kolhapur</h2>
+    <div style="width: 100%; height: 450px; border-radius: 20px; overflow: hidden; border: 10px solid var(--light); box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3821.805533598607!2d74.23073209999995!3d16.686612000000018!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc101ab93a16f7%3A0xff5c226bd74ccd73!2sDr.%20Prasad&#39;s%20LOTUS%20DENTAL%20CLINIC!5e0!3m2!1sen!2sin!4v1777896053621!5m2!1sen!2sin" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+    </div>
+</section>
+
+<footer>
+    <div style="margin-bottom: 25px;">
+        <h3 style="color: white; margin-bottom: 10px;">Connect With Us</h3>
+        <a href="tel:+917947108416" class="footer-highlight">+91 7947108416</a>
+        <p style="margin-top: 15px;">Mangeshkar Nagar, Subhash Road, Kolhapur</p>
+    </div>
+    <div style="opacity: 0.5; font-size: 14px; border-top: 1px solid #333; padding-top: 20px;">
+        © 2026 Lotus Dental Clinic | Designed for Excellence
+    </div>
+</footer>
+
+</body>
+</html>
